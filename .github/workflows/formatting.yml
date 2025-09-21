@@ -1,0 +1,45 @@
+name: Code Formatting Check
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  check-frontend:
+    name: Check Frontend Formatting (Prettier)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check Prettier formatting
+        run: npx prettier --check .
+
+  check-backend:
+    name: Check Backend Formatting (Spotless)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set executable permission on mvnw
+        run: chmod +x mvnw
+
+      - name: Check Spotless formatting
+        run: ./mvnw spotless:check
