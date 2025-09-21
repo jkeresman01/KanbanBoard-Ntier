@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: postgres_kanban
+    image: postgres:15
+    environment:
+      POSTGRES_USER: josip
+      POSTGRES_PASSWORD: Pa55w.rd
+      POSTGRES_DB: kanban_board
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_kanban
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5051:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+    depends_on:
+      - db
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  pgadmin-data:
