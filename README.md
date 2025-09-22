@@ -1,7 +1,7 @@
 # Kanban Board - N-tier #
 
 Simple kanban board using N-tier (layered) architecute.
-Will be converted to screaming architecture and clean architecute.
+Will be converted to screaming architecture, clean architecute.
 
 ## Backend structure ##
 
