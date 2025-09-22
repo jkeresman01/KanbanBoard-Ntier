@@ -1,6 +1,6 @@
 # Kanban Board - SA #
 
-Simple kanban board using screaming architecture, will be converted to clean architecure.
+Simple kanban board using N-tier (layered) architecute.
 
 ## Backend structure ##
 
