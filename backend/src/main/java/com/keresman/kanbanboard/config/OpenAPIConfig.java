@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 /** Swagger/OpenAPI configuration for API documentation. */
 @Configuration
-public class SwaggerConfig {
+public class OpenAPIConfig {
 
   private static final String SECURITY_SCHEME_NAME = "bearer-jwt";
 

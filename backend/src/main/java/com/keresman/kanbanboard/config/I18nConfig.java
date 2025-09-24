@@ -14,7 +14,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 /** i18n configuration: message source, default locale, and locale switching. */
 @Configuration
-public class I8nConfig implements WebMvcConfigurer {
+public class I18nConfig implements WebMvcConfigurer {
 
   /** Message source for i18n bundles (messages_*.properties). */
   @Bean
